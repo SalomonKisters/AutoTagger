@@ -6,6 +6,7 @@ from tqdm import tqdm
 import random
 
 directory = "content"
+results_path = "results"
 image_endings = [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff", ".webp"]
 random_number = random.randint(0,1000)
 
@@ -26,7 +27,8 @@ model = AutoModelForCausalLM.from_pretrained("microsoft/Florence-2-large-ft", tr
 processor = AutoProcessor.from_pretrained("microsoft/Florence-2-large-ft", trust_remote_code=True)
 
 print("Processing images")
-with open(f'image_analysis_results_{random_number}.tsv', 'w', newline='', encoding='utf-8') as tsvfile:
+tsv_path = os.path.join(results_path, f'image_analysis_results_{random_number}.tsv')
+with open(tsv_path, 'w', newline='', encoding='utf-8') as tsvfile:
     writer = csv.writer(tsvfile, delimiter='\t')
 
     writer.writerow(['File Path', 'Parsed Answer'])
