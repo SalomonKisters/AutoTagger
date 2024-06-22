@@ -5,7 +5,7 @@
 2. install nvidia container toolkit
 
 ## Execute
-1. Replace /path/to/content/folder in docker-compose.yml
+1. Replace LOCAL_PATH_OF_YOUR_CONTENT_DIR in .env with your content directory
 2. `docker-compose build`
 3. `docker-compose up -d`
 4. `docker-compose exec image_processor bash`
