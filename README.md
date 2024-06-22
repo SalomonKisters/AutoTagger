@@ -2,7 +2,7 @@
 
 ## Setup
 1. install docker
-2. install nvidia container toolkit
+2. ensure nvidia container toolkit is installed (should be there already)
 
 ## Execute
 1. Replace LOCAL_PATH_OF_YOUR_CONTENT_DIR in .env with your content directory
