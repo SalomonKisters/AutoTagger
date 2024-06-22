@@ -4,10 +4,11 @@ services:
   image_processor:
     build: .
     volumes:
-      - ./:/app
       - ./results:/app/results
+      - ${CONTENT_DRIVE}:/app/content:ro
     tty: true
     stdin_open: true
+    command: /bin/bash
     deploy:
       resources:
         reservations:
