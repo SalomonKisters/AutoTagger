@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  image_processor:
+    build: .
+    volumes:
+      - ./:/app
+      - ./results:/app/results
+    tty: true
+    stdin_open: true

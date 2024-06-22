@@ -5,7 +5,7 @@ import csv
 from tqdm import tqdm
 import random
 
-directory = "C:\\"
+directory = "D:\\"
 image_endings = [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff", ".webp"]
 random_number = random.randint(0,1000)
 

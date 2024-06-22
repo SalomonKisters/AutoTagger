@@ -1,4 +1,3 @@
 Pillow
 transformers
 tqdm
-torch
