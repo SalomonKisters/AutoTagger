@@ -6,6 +6,8 @@
 3. Run `docker build -t image_processor`
 
 ## Execute
-1. `CONTENT_DRIVE=/path/to/your_base_folder_to_classify docker-compose up -d`
-2. `docker-compose exec image_processor bash`
-3. python3 classify.py
+1. Replace /path/to/content/folder in docker-compose.yml
+2. Run `docker-compose up -d`
+2. Run `docker-compose exec image_processor bash`
+3. Run `python3 classify.py`
+4. to leave the image, Run: `exit`

@@ -5,7 +5,7 @@ services:
     build: .
     volumes:
       - ./results:/app/results
-      - ${CONTENT_DRIVE}:/app/content:ro
+      - D://:/app/content:ro
     tty: true
     stdin_open: true
     command: /bin/bash
