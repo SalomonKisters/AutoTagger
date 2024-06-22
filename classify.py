@@ -50,7 +50,8 @@ with open(tsv_path, 'w', newline='', encoding='utf-8') as tsvfile:
             generated_text = processor.batch_decode(generated_ids, skip_special_tokens=False)[0]
 
             parsed_answer = processor.post_process_generation(generated_text, task="<OD>", image_size=(image.width, image.height))['<OD>']['labels']
-
+            parsed_answer = list(set(parsed_answer))
+            
             image_path = image_path.replace("content",os.environ.get("CONTENT_DIR"))
             
             writer.writerow([image_path, parsed_answer])
