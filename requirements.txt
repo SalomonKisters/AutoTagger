@@ -3,3 +3,4 @@ transformers
 tqdm
 timm
 einops
+pandas
