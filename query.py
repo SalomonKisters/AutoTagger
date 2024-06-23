@@ -11,10 +11,9 @@ def query_tsv(query, file_number):
     df = load_tsv(file_number)
     
     query = query.lower()
-    df['File Path'] = df['File Path'].astype(str).str.lower()
     df['Tag'] = df['Tag'].astype(str).str.lower()
 
-    df['Match Score'] = df.apply(lambda row: (query in row['File Path']) + (query in row['Tag']), axis=1)
+    df['Match Score'] = df['Tag'].apply(lambda tag: tag.count(query))
     df_filtered = df[df['Match Score'] > 0]
     
     # Sort by match score
