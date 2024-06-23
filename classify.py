@@ -32,7 +32,7 @@ tsv_path = os.path.join(results_path, f'image_analysis_results_{file_number}.tsv
 with open(tsv_path, 'w', newline='', encoding='utf-8') as tsvfile:
     writer = csv.writer(tsvfile, delimiter='\t')
 
-    writer.writerow(['File Path', 'Parsed Answer'])
+    writer.writerow(['File Path', 'Tag'])
 
     for image_path in tqdm(images, desc="Processing Images", unit="image"):
         try:

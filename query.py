@@ -12,16 +12,16 @@ def query_tsv(query, file_number):
     
     query = query.lower()
     df['File Path'] = df['File Path'].astype(str).str.lower()
-    df['Parsed Answer'] = df['Parsed Answer'].astype(str).str.lower()
+    df['Tag'] = df['Tag'].astype(str).str.lower()
 
-    df['Match Score'] = df.apply(lambda row: (query in row['File Path']) + (query in row['Parsed Answer']), axis=1)
+    df['Match Score'] = df.apply(lambda row: (query in row['File Path']) + (query in row['Tag']), axis=1)
     df_filtered = df[df['Match Score'] > 0]
     
     # Sort by match score
     df_sorted = df_filtered.sort_values(by='Match Score', ascending=False)
     
     for index, row in df_sorted.iterrows():
-        print(f"File Path: {row['File Path']}, Parsed Answer: {row['Parsed Answer']}")
+        print(f"File Path: {row['File Path']}, Tag: {row['Tag']}")
         
 if __name__ == "__main__":
     query = input("Enter the search query: ")
