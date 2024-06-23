@@ -11,16 +11,27 @@ def query_tsv(query, file_number):
     df = load_tsv(file_number)
     
     query = query.lower()
-    df['Tag'] = df['Tag'].astype(str).str.lower()
-
-    df['Match Score'] = df['Tag'].apply(lambda tag: tag.count(query))
+    df['Tag'] = df['Tag'].apply(eval)  # Convert the Tag column to lists
+    
+    def calculate_match_score(tags):
+        match_score = 0
+        for tag in tags:
+            tag_lower = tag.lower()
+            if tag_lower.startswith(query):
+                match_score += 1.5  # More weight if query is at beginning
+            elif query in tag_lower:
+                match_score += 1
+        return match_score
+    
+    df['Match Score'] = df['Tag'].apply(calculate_match_score)
     df_filtered = df[df['Match Score'] > 0]
     
     # Sort by match score
     df_sorted = df_filtered.sort_values(by='Match Score', ascending=False)
     
     for index, row in df_sorted.iterrows():
-        print(f"File Path: {row['File Path']}, Tag: {row['Tag']}")
+        tags = ', '.join(row['Tag'])  # Convert list back to a comma-separated string for display
+        print(f"File Path: {row['File Path']}, Tags: [{tags}]")
         
 if __name__ == "__main__":
     query = input("Enter the search query: ")
